@@ -1,0 +1,230 @@
+@use 'variables'
+@use 'mixins'
+    
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+    font-family: 'Roboto', sans-serif
+
+.container
+
+    .header
+        background-color: variables.$primary-color
+
+        &-navbar
+            @include mixins.container
+            @include mixins.centralizar
+            justify-content: space-between
+            
+            @include mixins.tablet
+                row-gap: 30px
+                flex-direction: column
+
+            &-logo
+                width: 20rem
+
+            &-lista
+                @include mixins.centralizar
+                column-gap: 50px
+
+                &-item
+                    font-size: 25px
+                    list-style: none
+                    transition-property: border-bottom
+                    transition-duration: 0.3s
+
+
+                    &-link
+                        text-decoration: none
+                        color: variables.$bg-color
+                        
+                        &:hover
+                            border-bottom: solid 7px brown
+                            border-radius: 2px
+                
+    .section
+        @include mixins.centralizar
+        flex-direction: column
+        row-gap: 5px
+        padding: 2rem
+
+        &-titulo, &-descricao
+            @include mixins.centralizar
+
+        &-titulo
+            font-family: 'Roboto', sans-serif
+            font-size: 35px
+            text-transform: uppercase
+
+            @include mixins.notebook
+                font-size: 30px
+
+            @include mixins.tablet
+                font-size: 25px
+
+        &-descricao
+            font-family: 'Noto Serif Lao', serif
+            font-size: 23px
+            color: #5a5a5a
+            text-align: center
+
+            @include mixins.notebook
+                font-size: 20px
+
+            @include mixins.tablet
+                font-size: 15px
+
+    .main
+        padding: 1.5rem
+        display: flex
+        @include mixins.smartphone
+            flex-direction: column
+
+
+        &-itens
+            width: 900px
+            @include mixins.smartphone
+                width: 100%
+            
+            &-lista
+                flex: 1 0 auto
+                padding: 10px
+                display: grid
+                align-items: center
+                justify-content: center
+                grid-template-columns: repeat(3, 1fr)
+                grid-template-areas: "card1 card2 card3" "card4 card5 card6" "card7 card8 card9"
+                gap: 30px 10px
+
+                @include mixins.notebook
+                    grid-template-columns: repeat(2, 1fr)
+                    grid-template-areas:"card1 card2" "card3 card4" "card5 card6" "card7 card8" "card9 card9" 
+                
+                @include mixins.tablet
+                    display: flex
+                    flex-direction: column
+
+                &-cards
+                    list-style: none
+                    width: 17rem
+                    height: 25rem
+                    padding: 12px
+                    display: grid
+                    align-items: center
+
+                    &:hover
+                        border: 2px solid brown
+                        border-radius: 25px
+
+                    &-img
+                        height: 10rem
+                        width: 15rem
+                        border-radius: 20px
+
+                    &-titulo
+                        font-size: 18px
+                        text-transform: uppercase
+
+
+                    &-descricao
+                        font-size: 18px
+                        color: #5a5a5a
+
+
+                .card1
+                    grid-area: card1
+
+                .card2
+                    grid-area: card2
+
+                .card3
+                    grid-area: card3
+
+                .card4
+                    grid-area: card4
+
+                .card5
+                    grid-area: card5
+
+                .card6
+                    grid-area: card6
+
+                .card7
+                    grid-area: card7
+
+                .card8
+                    grid-area: card8
+
+                .card9
+                    grid-area: card9
+
+        &-aside
+            background-color: variables.$secondary-color
+            width: 350px
+            padding: 1rem
+
+            @include mixins.smartphone
+                width: 100%
+                
+
+            &-titulo
+                color: variables.$bg-color
+                font-size: 20px
+                text-align: center
+                margin: 20px auto
+                text-transform: uppercase
+                font-family: 'Roboto', sans-serif
+
+            &-lista
+                @include mixins.centralizar
+                flex-direction: column
+
+                &-itens
+                    @include mixins.centralizar
+                    flex-direction: column
+                    padding: 15px
+                    gap: 10px
+
+                    &:hover
+                        border: 2px solid brown
+                        border-radius: 20px
+
+                    &-img
+                        width: 15rem
+                        border-radius: 20px
+
+                    &-titulo
+                        font-family: 'Roboto', sans-serif
+                        color: variables.$bg-color
+                        margin: 15px 0 
+                        text-transform: uppercase
+                        font-size: 18px
+                            
+.footer
+        background-color: variables.$primary-color
+
+        &-navbar
+            @include mixins.container
+            @include mixins.centralizar
+            justify-content: space-between
+            
+            @include mixins.tablet
+                row-gap: 30px
+                flex-direction: column
+
+            &-logo
+                width: 20rem
+
+            &-link
+                text-decoration: none
+                color: brown
+                
+                .bi
+                    width: 3rem
+                    height: 3rem
+
+                        
+                    
+            
+                
