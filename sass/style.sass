@@ -8,28 +8,129 @@
     font-family: 'Roboto', sans-serif
 
 .container
+    background-color: #E2E1DD
 
     .header
-        background-color: variables.$primary-color
+        height: 8rem
+        background-color: variables.$bg-color
+        border-bottom: 5px solid variables.$ilustrator-color
 
         &-navbar
             @include mixins.container
             @include mixins.centralizar
             justify-content: space-between
+            height: 100%
             
-            @include mixins.tablet
-                row-gap: 30px
-                flex-direction: column
+            
+
+            &-icon
+
+                &-navicon
+
+                    display: none
+                    @include mixins.container
+
+                    @include mixins.tablet
+                        display: block
+
+                    .hamburger1
+                        height: 45px
+                        margin: 10px
+                        display: -ms-grid
+                        display: grid
+                        grid-template-rows: repeat(3, 1fr)
+                        justify-content: center
+                        z-index: 120
+
+                        div
+                            background-color: variables.$secondary-color
+                            position: relative
+                            width: 40px
+                            height: 5px
+                            margin-top: 7px
+                            -webkit-transition: all 0.3s ease-in-out
+
+                    #toggle1
+                        display: none
+
+                    #toggle1:checked + .hamburger1 .top
+                        -webkit-transform: rotate(-45deg)
+                        transform: rotate(-45deg)
+                        margin: 20px 0 0
+
+                    #toggle1:checked + .hamburger1 .meat
+                        -webkit-transform: rotate(45deg)
+                        transform: rotate(45deg)
+                        margin: -4px 20px 0 0
+
+                    #toggle1:checked + .hamburger1 .bottom
+                        -webkit-transform: scale(0)
+                        transform: scale(0)
+
+                    #toggle1:checked ~ .menu1
+                        position: absolute
+                        height: 300px
+                        margin-top: 32px
+                        width: 118px
+                        right: 45px
+
+                    &-menu
+                        background-color: variables.$secondary-color
+                        margin: 0 
+                        display: -ms-grid
+                        display: grid
+                        padding: 0
+                        width: 100px    
+                        text-align: center
+                        height: 0
+                        overflow: hidden
+                        transition: height .4s ease
+                        -webkit-transition: all 0.3s ease
+                        transition: all 0.3s ease
+
+                        li
+                            display: flex
+                            align-items: center
+                            justify-content: center
+                            
+                            &-link1
+                                text-align: center
+                                width: 100%
+                                margin: 0
+                                padding-bottom: 10px
+                                font: 700 15px 'Oswald', sans-serif
+                                width: 90px
+                                color: #fff
+                                padding-bottom: 10px
+                                border-bottom: 3px solid #face0b
+
+                                &:hover
+                                    border-bottom: solid 2px variables.$primary-color
+                                    color: variables.$bg-color
+                                    -webkit-transition: all 0.3s ease
+                                    transition: all 0.3s ease
+
+
+                    #toggle1:checked
+                        .menu1
+                            height: 200px
+                            width: 118px
+
 
             &-logo
-                width: 20rem
+                width: 10rem
 
             &-lista
                 @include mixins.centralizar
-                column-gap: 50px
+                flex-wrap: wrap
+                gap: 1rem 2.5rem
+
+                @include mixins.tablet
+                    display: none
 
                 &-item
-                    font-size: 25px
+                    font-size: 19px
+                    font-weight: bold
                     list-style: none
                     transition-property: border-bottom
                     transition-duration: 0.3s
@@ -37,20 +138,25 @@
 
                     &-link
                         text-decoration: none
-                        color: variables.$bg-color
+                        color: variables.$secondary-color
+                        transition-property: border-bottom
+                        transition-duration: 0.4s
                         
                         &:hover
-                            border-bottom: solid 7px brown
-                            border-radius: 2px
+                            border-bottom: solid 7px variables.$ilustrator-color
                 
     .section
         @include mixins.centralizar
         flex-direction: column
         row-gap: 5px
+        margin: 2rem 2rem 0 2rem
         padding: 2rem
+        background-color: #fff
+        border-top: 5px solid variables.$ilustrator-color
 
         &-titulo, &-descricao
             @include mixins.centralizar
+            text-align: center
 
         &-titulo
             font-family: 'Roboto', sans-serif
@@ -82,6 +188,7 @@
             flex-direction: column
 
 
+
         &-itens
             width: 900px
             @include mixins.smartphone
@@ -94,12 +201,12 @@
                 align-items: center
                 justify-content: center
                 grid-template-columns: repeat(3, 1fr)
-                grid-template-areas: "card1 card2 card3" "card4 card5 card6" "card7 card8 card9"
-                gap: 30px 10px
+                grid-template-areas: "card1 card1 card1" "card1-1 card1-2 card1-3" "card2 card2 card2" "card2-1 card2-2 card2-3" "card3 card3 card3" "card3-1 card3-2 card3-3"
+                row-gap: 50px
 
                 @include mixins.notebook
                     grid-template-columns: repeat(2, 1fr)
-                    grid-template-areas:"card1 card2" "card3 card4" "card5 card6" "card7 card8" "card9 card9" 
+                    grid-template-areas:"card1 card1" "card1-1 card1-2" "card1-3 card1-3" "card2 card2" "card2-1 card2-2" "card2-3 card2-3" "card3 card3" "card3-1 card3-2" "card3-3 card3-3" 
                 
                 @include mixins.tablet
                     display: flex
@@ -107,15 +214,20 @@
 
                 &-cards
                     list-style: none
-                    width: 17rem
+                    width: 18rem
                     height: 25rem
                     padding: 12px
                     display: grid
+                    margin-top: -50px
                     align-items: center
+                    transition-property: border
+                    transition-duration: 0.1s
+                    background-color: variables.$bg-color
 
-                    &:hover
-                        border: 2px solid brown
-                        border-radius: 25px
+                    // &:hover
+                    //     border: 2px solid variables.$ilustrator-color
+                    //     border-radius: 25px
+
 
                     &-img
                         height: 10rem
@@ -130,46 +242,66 @@
                     &-descricao
                         font-size: 18px
                         color: #5a5a5a
+                        padding-left: 2rem
 
+                &-categoria
+                    border-top: 5px solid variables.$ilustrator-color
+                    @include mixins.centralizar
+                    padding: 2rem
+                    font-weight: 700
+                    font-size: 21px
+                    color: variables.$secondary-color
+                    background-color: variables.$bg-color
 
                 .card1
                     grid-area: card1
 
+                .card1-1
+                    grid-area: card1-1
+
+                .card1-2
+                    grid-area: card1-2
+
+                .card1-3
+                    grid-area: card1-3
+
                 .card2
                     grid-area: card2
+
+                .card2-1
+                    grid-area: card2-1
+
+                .card2-2
+                    grid-area: card2-2
+
+                .card2-3
+                    grid-area: card2-3
 
                 .card3
                     grid-area: card3
 
-                .card4
-                    grid-area: card4
+                .card3-1
+                    grid-area: card3-1
 
-                .card5
-                    grid-area: card5
+                .card3-2
+                    grid-area: card3-2
 
-                .card6
-                    grid-area: card6
-
-                .card7
-                    grid-area: card7
-
-                .card8
-                    grid-area: card8
-
-                .card9
-                    grid-area: card9
+                .card3-3
+                    grid-area: card3-3
 
         &-aside
-            background-color: variables.$secondary-color
+            margin: 0.5rem
+            background-color: variables.$bg-color
             width: 350px
             padding: 1rem
+            border-top: 5px solid variables.$ilustrator-color
 
             @include mixins.smartphone
                 width: 100%
                 
 
             &-titulo
-                color: variables.$bg-color
+                color: variables.$secondary-color
                 font-size: 20px
                 text-align: center
                 margin: 20px auto
@@ -185,10 +317,13 @@
                     flex-direction: column
                     padding: 15px
                     gap: 10px
+                    transition-property: border
+                    transition-duration: 0.1s
 
                     &:hover
-                        border: 2px solid brown
+                        border: 1px solid variables.$secondary-color
                         border-radius: 20px
+                        cursor: pointer
 
                     &-img
                         width: 15rem
@@ -196,13 +331,14 @@
 
                     &-titulo
                         font-family: 'Roboto', sans-serif
-                        color: variables.$bg-color
+                        color: variables.$secondary-color
                         margin: 15px 0 
                         text-transform: uppercase
                         font-size: 18px
                             
 .footer
-        background-color: variables.$primary-color
+        background-color: variables.$bg-color
+        border-top: 5px solid variables.$ilustrator-color
 
         &-navbar
             @include mixins.container
@@ -214,11 +350,11 @@
                 flex-direction: column
 
             &-logo
-                width: 20rem
+                width: 10rem
 
             &-link
                 text-decoration: none
-                color: brown
+                color: variables.$secondary-color
                 
                 .bi
                     width: 3rem
